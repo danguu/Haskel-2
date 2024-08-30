@@ -1,23 +1,23 @@
--- Ejercicio 1: Definir las funciones `toDigits` y `toDigitsRev`
+-- Ejercicio 1:`toDigits` y `toDigitsRev`
 toDigits :: Int -> [Int]
 toDigits n = map (read . (:[])) (show n)
 
 toDigitsRev :: Int -> [Int]
 toDigitsRev n = reverse (toDigits n)
 
--- Ejercicio 2: Definir la función `doubleEveryOther`
+-- Ejercicio 2:`doubleEveryOther`
 doubleEveryOther :: [Int] -> [Int]
 doubleEveryOther digits = zipWith (*) digits (cycle [1, 2])
 
--- Ejercicio 3: Definir la función `sumDigits`
+-- Ejercicio 3:`sumDigits`
 sumDigits :: [Int] -> Int
 sumDigits digits = sum (map (\d -> if d > 9 then d - 9 else d) digits)
 
--- Ejercicio 4: Definir la función `validate`
+-- Ejercicio 4:`validate`
 validate :: Int -> Bool
 validate n = sumDigits (doubleEveryOther (toDigitsRev n)) `mod` 10 == 0
 
--- Función principal para probar las funciones
+-- Para probar las funciones :)
 main :: IO ()
 main = do
   putStrLn "Ingrese un número de tarjeta de crédito:"
